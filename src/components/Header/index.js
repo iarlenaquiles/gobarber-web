@@ -18,6 +18,7 @@ export default function Header() {
 
         <aside>
           <Notifications />
+
           <Profile>
             <div>
               <strong>Iarlen Aquiles</strong>
