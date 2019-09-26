@@ -10,7 +10,7 @@ export function* signIn({ payload }) {
       email,
       password,
     });
-    console.tron.log(response);
+
     const { token, user } = response.data;
 
     if (!user.provider) {
