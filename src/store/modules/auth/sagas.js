@@ -1,11 +1,12 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import api from '~/services/api';
 import history from '~/services/history';
-import { signInSuccess } from './actions';
+import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
-  const { email, password } = payload;
   try {
+    const { email, password } = payload;
+
     const response = yield call(api.post, 'sessions', {
       email,
       password,
@@ -22,7 +23,7 @@ export function* signIn({ payload }) {
 
     history.push('/dashboard');
   } catch (error) {
-    console.tron.log(error);
+    yield put(signFailure());
   }
 }
 
